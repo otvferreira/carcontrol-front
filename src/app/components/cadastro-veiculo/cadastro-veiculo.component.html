@@ -1,0 +1,23 @@
+<div class="cadastro-veiculo">
+    <h2>Cadastro de Veículo</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="marca">Marca:</label>
+        <input type="text" id="marca" [(ngModel)]="veiculo.marca" name="marca" required>
+      </div>
+      <div>
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" [(ngModel)]="veiculo.modelo" name="modelo" required>
+      </div>
+      <div>
+        <label for="ano">Ano:</label>
+        <input type="number" id="ano" [(ngModel)]="veiculo.ano" name="ano" required>
+      </div>
+      <div>
+        <label for="placa">Placa:</label>
+        <input type="text" id="placa" [(ngModel)]="veiculo.placa" name="placa" required>
+      </div>
+      <button type="submit">Cadastrar</button>
+    </form>
+  </div>
+  
