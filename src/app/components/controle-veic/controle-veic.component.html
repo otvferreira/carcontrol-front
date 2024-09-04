@@ -1,1 +1,18 @@
-<p>controle-veic works!</p>
+<div class="controle-veiculo">
+    <h2>Controle de Veículos</h2>
+  
+    <div>
+      <label for="veiculo">Selecione um Veículo:</label>
+      <select id="veiculo" [(ngModel)]="selectedVeiculoId">
+        <option *ngFor="let veiculo of veiculos" [value]="veiculo.id">{{ veiculo.marca }} - {{ veiculo.modelo }}</option>
+      </select>
+    </div>
+  
+    <div>
+      <label for="ocupado">Ocupado:</label>
+      <input type="checkbox" id="ocupado" [(ngModel)]="ocupado">
+    </div>
+  
+    <button (click)="onUpdateStatus()">Atualizar Status</button>
+  </div>
+  
