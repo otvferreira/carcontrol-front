@@ -13,7 +13,6 @@ export class VeiculoService {
   cadastrarVeiculo(veiculo: any): Observable<any> {
     const token = sessionStorage.getItem("auth-token");
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
     return this.http.post(`${this.apiUrl}/cadastrar`, veiculo, { headers });
   }
 
@@ -21,7 +20,12 @@ export class VeiculoService {
     const token = sessionStorage.getItem("auth-token");
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     const body = { ocupado };
-
     return this.http.put(`${this.apiUrl}/atualizar-status/${id}`, body, { headers });
+  }
+
+  cadastrarTarefa(id: number, tarefa: any): Observable<any> {
+    const token = sessionStorage.getItem("auth-token");
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(`${this.apiUrl}/${id}/tarefas`, tarefa, { headers });
   }
 }

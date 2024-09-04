@@ -1,1 +1,23 @@
-<p>cadastro-tarefa works!</p>
+<div class="cadastro-tarefa">
+    <h2>Cadastro de Tarefa para Veículo</h2>
+  
+    <div>
+      <label for="veiculo">Selecione um Veículo:</label>
+      <select id="veiculo" [(ngModel)]="selectedVeiculoId">
+        <option *ngFor="let veiculo of veiculos" [value]="veiculo.id">{{ veiculo.marca }} - {{ veiculo.modelo }}</option>
+      </select>
+    </div>
+  
+    <div>
+      <label for="descricao">Descrição da Tarefa:</label>
+      <input type="text" id="descricao" [(ngModel)]="tarefa.descricao" required>
+    </div>
+  
+    <div>
+      <label for="data">Data:</label>
+      <input type="date" id="data" [(ngModel)]="tarefa.data" required>
+    </div>
+  
+    <button (click)="onCadastrarTarefa()">Cadastrar Tarefa</button>
+  </div>
+  
