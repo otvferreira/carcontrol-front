@@ -1,12 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MotoristaService } from '../motorista.service';
 
 @Component({
   selector: 'app-cadastro-motorista',
-  standalone: true,
-  imports: [],
   templateUrl: './cadastro-motorista.component.html',
-  styleUrl: './cadastro-motorista.component.scss'
+  styleUrls: ['./cadastro-motorista.component.css']
 })
-export class CadastroMotoristaComponent {
+export class CadastroMotoristaComponent implements OnInit {
+  motorista = {
+    nome: '',
+    cpf: '',
+    dataNascimento: ''
+  };
 
+  constructor(private motoristaService: MotoristaService) {}
+
+  ngOnInit(): void {}
+
+  onCadastrarMotorista() {
+    this.motoristaService.cadastrarMotorista(this.motorista).subscribe(
+      response => {
+        console.log('Motorista cadastrado com sucesso', response);
+        // Limpar o formulário ou fornecer feedback ao usuário
+        this.limparFormulario();
+      },
+      error => {
+        console.error('Erro ao cadastrar motorista', error);
+      }
+    );
+  }
+
+  limparFormulario() {
+    this.motorista = {
+      nome: '',
+      cpf: '',
+      dataNascimento: ''
+    };
+  }
 }
